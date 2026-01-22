@@ -336,34 +336,34 @@ export default {
         localStorage.block = JSON.stringify(res.items[0].fields)
       })
     // 制限解除確認
-    client
-      .getEntries({
-        content_type: 'lift',
-        limit: 400,
-      })
-      .then((res) => {
-        const lift = res.items[0].fields
-        localStorage.lift = 0
-        for (const user of lift.users) {
-          if (
-            user.room_id === localStorage.room_id &&
-            user.room_url_key === localStorage.room_url_key &&
-            user.uuid === localStorage.uuid
-          ) {
-            localStorage.lift = 1
-            break
-          }
-        }
-      })
+    // client
+    //   .getEntries({
+    //     content_type: 'lift',
+    //     limit: 400,
+    //   })
+    //   .then((res) => {
+    //     const lift = res.items[0].fields
+    //     localStorage.lift = 0
+    //     for (const user of lift.users) {
+    //       if (
+    //         user.room_id === localStorage.room_id &&
+    //         user.room_url_key === localStorage.room_url_key &&
+    //         user.uuid === localStorage.uuid
+    //       ) {
+    //         localStorage.lift = 1
+    //         break
+    //       }
+    //     }
+    //   })
 
     // 解除判定
-    if (
-      localStorage.lift === '1' ||
-      Number(localStorage.register) >
-      Math.floor(new Date().getTime() / 1000) - 259200
-    ) {
-      this.checkFlg = true
-    }
+    // if (
+    //   localStorage.lift === '1' ||
+    //   Number(localStorage.register) >
+    //   Math.floor(new Date().getTime() / 1000) - 259200
+    // ) {
+    this.checkFlg = true
+    // }
 
     // 特別情報
     client
